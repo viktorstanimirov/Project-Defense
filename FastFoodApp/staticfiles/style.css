@@ -1,5 +1,6 @@
+
 body {
-    font: 1.5/15px sans-serif;
+    font: 1.5em/1.5 sans-serif;
     background-color: rgb(211, 204, 204);
 }
 
@@ -19,15 +20,6 @@ header {
     border-bottom: #e8491d 4px solid;
 }
 
-/* .home header
-{
-    background: #35424a;
-    color: #ffffff;
-    padding-top: 15px;
-    min-height: 60px;
-    border-bottom: #e8491d 4px solid;
-} */
-
 header a {
     color: #ffffff;
     text-decoration: none;
@@ -42,7 +34,6 @@ ul {
 }
 
 header li {
-    /*float:left;*/
     display: inline;
     padding: 0 20px 0 20px;
 }
@@ -115,7 +106,6 @@ aside h4 {
     background: url("products/background.jpg");
     height: 95vh;
     background-size: cover;
-
 }
 
 .round {
@@ -149,7 +139,6 @@ aside h4 {
     font-family: helvetica;
 }
 
-
 .form-container {
     background: url("products/background.jpg");
     background-size: cover;
@@ -161,172 +150,15 @@ aside h4 {
 
 .form-container p {
     width: 30%;
-    top: -450px;
+    top: 15%;
+    transform: translateY(-50%);
     margin-left: 70%;
-    position: relative;
+    position: absolute;
     font-size: 35px;
     color: white;
     font-family: geneva;
 }
 
-.form-box {
-    width: 380px;
-    height: 450px;
-    margin-top: 0;
-    margin-left: 5%;
-    padding: 5px;
-    background: none;
-    position: relative;
-    overflow: hidden;
-    transform: translate(10%, 7%);
-}
-
-.button-box {
-    width: 220px;
-    margin: 35px auto;
-    position: relative;
-    box-shadow: 0 0 20px 9px #cc8a78;
-    border-radius: 30px;
-}
-
-.toggle-btn {
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    position: relative;
-    color: #fff;
-    font-size: 15px;
-}
-
-#btn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 110px;
-    height: 100%;
-    background-color: #e8491d;
-    transition: 0.5s;
-    border-radius: 30px;
-}
-
-.social-icons {
-    margin: 30px auto;
-    text-align: center;
-}
-
-.social-icons i {
-    cursor: pointer;
-    border: 2px solid #e8491d;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-    box-shadow: 0 0 20px 0 orangered;
-    color: #fff;
-}
-
-.input-group {
-    top: 180px;
-    position: absolute;
-    width: 280px;
-    transition: 0.5s;
-}
-
-::placeholder {
-    color: #ccc;
-    font-size: 14px;
-}
-
-.input-field {
-    color: #fff;
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-bottom: 1px solid #e8491d;
-    outline: none;
-    background: transparent;
-    font-size: 14px;
-}
-
-.textbox {
-    width: 100%;
-    overflow: hidden;
-    font-size: 20px;
-    padding: 8px 0;
-    margin: 20px 0;
-    border-bottom: 1px solid #e8491d;
-}
-
-.textbox i {
-    width: 26px;
-    float: left;
-    text-align: center;
-    color: #fff;
-}
-
-.textbox input {
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 18px;
-    width: 80%;
-    float: left;
-    color: #fff;
-}
-
-.submit-btn {
-    width: 85%;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: auto;
-    display: block;
-    outline: none;
-    background: #e8491d;
-    border-radius: 30px;
-    margin-top: 15%;
-    font-size: 16px;
-}
-
-#register .submit-btn {
-    width: 85%;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: auto;
-    display: block;
-    outline: none;
-    background: #e8491d;
-    border-radius: 30px;
-    margin-top: 10%;
-    font-size: 16px;
-}
-
-.forgot {
-    margin: 20px 10px 30px 0;
-}
-
-.input-group span {
-
-    color: lightgrey;
-    font-size: 16px;
-    position: absolute;
-    margin: 10px 10px 30px 0;
-}
-
-#login {
-    left: 50px;
-}
-
-#register {
-    left: 450px;
-}
 
 footer {
     width: 98%;
@@ -338,7 +170,6 @@ footer {
     position: relative;
     border-top: 2px solid #35424a;
 }
-
 
 @media (max-width: 768px) {
     header #brand, header nav, header nav li, article#content, aside#sidebar {
