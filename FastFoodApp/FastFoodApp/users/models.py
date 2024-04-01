@@ -31,3 +31,5 @@ class User(models.Model):
         blank=False,
     )
 
+
+

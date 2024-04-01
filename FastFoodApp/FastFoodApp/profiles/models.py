@@ -27,7 +27,7 @@ class Profile(models.Model):
         validators=(
             validate_age,
         ),
-        help_text=("Age requirement: 21 years and above."
+        help_text=("Age requirement: 18 years and above."
                    ),
     )
 
