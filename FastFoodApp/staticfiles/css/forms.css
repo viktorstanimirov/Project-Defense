@@ -6,7 +6,8 @@
     position: relative;
     width: 550px;
     height: auto;
-    background: rgba(0, 0, 0, 0.27);
+    /*background: rgba(0, 0, 0, 0.27);*/
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     text-align: center;
     padding: 10px;
     border-radius: 30px;
@@ -70,7 +71,7 @@ input[type="url"]{
     margin-top: 10px;
     font-size: 17px;
     border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
+    box-shadow: inset 6px 6px 6px #a8abb0, inset -6px -6px 6px #a8abb0;
 }
 
 
@@ -85,7 +86,10 @@ select {
 }
 
 #id_description {
-    background: #6d8d46b5;
+    /*background: #6d8d46b5;*/
+    /*background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));*/
+    box-shadow: inset 6px 6px 6px #a8abb0, inset -6px -6px 6px #a8abb0;
+
     padding: 20px 20px 20px 20px;
 }
 

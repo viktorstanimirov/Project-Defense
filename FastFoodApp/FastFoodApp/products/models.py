@@ -20,7 +20,7 @@ class Product(models.Model):
     description = models.TextField()
 
     image = models.ImageField(
-        upload_to="images/",
+        upload_to="media/",
         null=False,
         blank=False,
     )

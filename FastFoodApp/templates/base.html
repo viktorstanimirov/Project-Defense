@@ -18,7 +18,7 @@
                 <a href="{% url "menu" %}">Menu</a>
                 <a href="{}">Sign in</a>
                 <a href="{}">Register</a>
-                <a href="{}">Create food</a>
+                <a href="{% url "create-food" %}">Create food</a>
             {% else %}
                 <a href="{% url "register" %}">Create Food</a>
                 <a href="{}">Profile</a>
