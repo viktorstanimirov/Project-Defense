@@ -1,22 +1,24 @@
 #register-page,
 #create-page,
 #edit-page,
-#delete-page
-#login-page{
+#delete-page,
+#login-page {
     position: relative;
     width: 550px;
     height: auto;
     /*background: rgba(0, 0, 0, 0.27);*/
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    background: linear-gradient(135deg, rgba(57, 63, 68, 0.89), rgba(255, 255, 255, 0));
     text-align: center;
     padding: 10px;
     border-radius: 30px;
     border: 3px solid #6e8e4626;
 }
 
+
 .container {
     padding: 40px;
 }
+
 
 .container > h1 {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -34,7 +36,7 @@
 label,
 input,
 select,
-textarea{
+textarea {
     display: block;
     width: 100%;
     padding: 0;
@@ -64,8 +66,8 @@ input[type="number"],
 input[type="password"],
 input[type="email"],
 input[type="text"],
-input[type="url"]{
-    background: transparent;
+input[type="url"] {
+    background: #393f44ab;
     padding: 20px 20px 20px 20px;
     height: 50px;
     margin-top: 10px;
@@ -76,7 +78,7 @@ input[type="url"]{
 
 
 select {
-    background: #6d8d46b5;
+    background: #393f44ab;
     padding: 10px 20px 10px 20px;
     height: 50px;
     margin-top: 10px;
@@ -86,23 +88,23 @@ select {
 }
 
 #id_description {
-    /*background: #6d8d46b5;*/
-    /*background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));*/
+    background: #393f44ab;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     box-shadow: inset 6px 6px 6px #a8abb0, inset -6px -6px 6px #a8abb0;
 
     padding: 20px 20px 20px 20px;
 }
 
 label[for="terms"] > input,
-label[for="terms"] > select{
+label[for="terms"] > select {
     display: inline;
 }
 
-#delete-page>select>type{
+#delete-page > select > type {
     color: white;
 }
 
-.btn{
+.btn {
     color: #fff;
     border: none;
     margin-top: 30px;
@@ -116,17 +118,17 @@ label[for="terms"] > select{
     transition-property: box-shadow;
 }
 
-.btn{
-    background: transparent;;
-    box-shadow: 0 0 25px white;
+.btn {
+    background: rgba(57, 63, 68, 0.7);
+    box-shadow: 0 0 25px rgb(42, 40, 40);
     width: 50%;
 }
 
-.btn:hover{
+.btn:hover {
     box-shadow: 0 0 100px white,
-                0 0 50px white,
-                0 0 25px white,
-                0 0 5px white;
+    0 0 50px white,
+    0 0 25px white,
+    0 0 5px white;
 }
 
 .container {
@@ -160,11 +162,12 @@ textarea {
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
 }
 
-textarea>description{
+textarea > description {
     padding: 20px 20px 20px 20px;
 }
 
-.errorlist{
-    color: red
+/*#TODO: Change the color of the errorlist to more visible color#*/
+.errorlist {
+    color: #ff0000
 }
 

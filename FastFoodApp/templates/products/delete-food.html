@@ -1,0 +1,31 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block main_content %}#}
+{#    <section id="delete-page" class="auth">#}
+{#        <form action="{% url "delete-food" pk=product.id %}" method="post">#}
+{#            <div class="container">#}
+{#                <h1>Delete product</h1>#}
+{#                {% csrf_token %}#}
+{#                {{form.as_p}}#}
+{#                <input class="btn submit" type="submit" value="Delete product">#}
+{#            </div>#}
+{#        </form>#}
+{#    </section>#}
+{#{% endblock %}#}
+
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id="delete-page" class="auth">
+        <div class="container">
+            <h1 style="color: red;">Are you sure you want to delete {{ product.name }}?</h1>
+            <form action="{% url "delete-food" pk=product.id %}" method="post">
+                {% csrf_token %}
+                <input class="btn" type="submit" value="Yes">
+                <input class="btn" type="button" value="Cancel"
+                       onclick="window.history.back(); return false;">
+
+            </form>
+        </div>
+    </section>
+{% endblock %}

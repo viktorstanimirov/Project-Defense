@@ -20,7 +20,7 @@
     margin-bottom: 40px;
     text-transform: uppercase;
     text-align: center;
-    color: #79A1489C;
+    color: #E2E8EA;
 }
 
 .info-section {
@@ -45,7 +45,7 @@
 }
 
 .product-header>h1 {
-    color: #7A5820;
+    color: #E2E8EA;
     margin-top: 5px;
     font-size: 28px;
     font-weight: 400;
@@ -122,13 +122,11 @@
     background: red;
 }
 
-.edit-button:hover, .delete-button:hover{
+.edit-button:hover,
+.delete-button:hover{
     box-shadow: 0 0 100px white,
                 0 0 50px white,
                 0 0 25px white,
                 0 0 5px white;
 }
 
-.star-img{
-    width: 10%
-}

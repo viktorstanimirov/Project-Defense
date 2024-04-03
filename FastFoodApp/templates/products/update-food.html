@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id="create-page" class="auth">
+        <form action="{% url "update-food" pk=product.id %}" method="post">
+            <div class="container">
+                <h1>Edit product</h1>
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input class="btn submit" type="submit" value="Edit product">
+            </div>
+        </form>
+    </section>
+{% endblock %}
