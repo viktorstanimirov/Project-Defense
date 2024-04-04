@@ -43,13 +43,3 @@ class ProductUpdateForm(ProductBaseForm):
 
 class ProductDeleteForm(ReadonlyFieldsFormMixin, ProductBaseForm):
     pass
-    # readonly_fields = "__all__"
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self._apply_readonly_on_fields()
-
-    # def save(self, commit=True):
-    #     if commit:
-    #         self.instance.delete()
-    #     return self.instance

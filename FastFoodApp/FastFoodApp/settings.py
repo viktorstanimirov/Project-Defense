@@ -14,8 +14,8 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     'FastFoodApp.web',
     'FastFoodApp.products',
-    'FastFoodApp.users',
-    'FastFoodApp.profiles',
+    'FastFoodApp.accounts',
+
 ]
 
 INSTALLED_APPS = [
