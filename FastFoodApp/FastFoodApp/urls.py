@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('FastFoodApp.web.urls')),
     path('products/', include('FastFoodApp.products.urls')),
+    path('accounts/', include('FastFoodApp.accounts.urls')),
 ]
 
 if settings.DEBUG:

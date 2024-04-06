@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Monoton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Croissant+One&family=Great+Vibes&family=Lato&family=Montserrat:wght@300;400&family=PT+Serif:ital@1&family=Tangerine:wght@700&display=swap');
-#product-details {
+#product-details,
+#profile-details{
     position: relative;
     display: block;
     width: 980px;
@@ -11,7 +12,8 @@
 
 }
 
-#product-details>h1 {
+#product-details>h1,
+#profile-details>h1{
     letter-spacing: 10px;
     font-family: 'Croissant One', cursive;
     color: #E2E8EA;
@@ -38,13 +40,15 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
 }
 
-.product-header {
+.product-header,
+.profile-header {
     position: relative;
     padding: 25px;
     height: 40%;
 }
 
-.product-header>h1 {
+.product-header>h1,
+.profile-header>h1 {
     color: #E2E8EA;
     margin-top: 5px;
     font-size: 28px;
@@ -53,7 +57,8 @@
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.product-header>h4 {
+.product-header>h4,
+.profile-header>h4{
     color: #E2E8EA;
     font-size: 23px;
     font-weight: 400;
@@ -78,12 +83,14 @@
     font-size: 25px;
     color: #E2E8EA;
 }
-.description-product{
+.description-product,
+.description-profile{
     font-size: 20px;
     color: #E2E8EA;
 }
 
-.product-img {
+.product-img,
+.profile-img {
     width: 25%;
     position: relative;
     float: left;
