@@ -14,27 +14,23 @@
     <header>
         <h1><a class="index-navigation" href="{% url "index" %}">Vik's Fast Food Vault</a></h1>
         <nav>
-
-
-
-            {% if not appsuser.is_authenticated or is_superuser %}
+            {% if not user.id %}
                 <a href="{% url "menu" %}">Menu</a>
                 <a href="{% url "login" %}">Sign in</a>
-
-                <a href="{% url "signup" %}">Register</a>
-                 <a href="{% url "logout" %}">Logout</a>
-                 <a href="{% url "cart_details" %}">Cart</a>
-
-
-
+                <a href="{% url "signup" %}">Register</a>>
             {% else %}
                 <a href="{% url "menu" %}">Menu</a>
-                <a href="{% url "create-food" %}">Create Food</a>
-                <a href="{% url "profile" pk=user.id %}">Profile</a>
+                <a href="{% url "cart_details" %}">Cart</a>
+                <a href="{% url "profile" pk=request.user.id %}">Profile</a>
                 <a href="{% url "logout" %}">Logout</a>
 
-
             {% endif %}
+
+            {% if user.is_authenticated or is_superuser %}
+                <a href="{% url "create-food" %}">Create Food</a>
+            {% endif %}
+
+
         </nav>
     </header>
     {% block main_content %}

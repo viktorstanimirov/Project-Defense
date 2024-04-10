@@ -14,7 +14,7 @@
                 <p><span class="description-product">Description:{{ product.description }}</span></p>
             </div>
             <div class="buttons">
-                {% if appsuser.is_authenticated or is_staff %}
+                {% if user.is_authenticated %}
                 <a href="{% url "update-food" pk=product.id %}" class="edit-button">Edit</a>
                 <a href="{% url "delete-food" pk=product.id %}" class="delete-button">Delete</a>
                 {% endif %}

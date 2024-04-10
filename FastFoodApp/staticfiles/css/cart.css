@@ -1,7 +1,7 @@
 .cart-container {
     max-width: 600px;
     margin: 50px auto;
-    background-color: rgba(12, 12, 12, 0.22);
+    background-color: rgba(12, 12, 12, 0.78);
     padding: 20px;
     border-radius: 8px;
 }
@@ -19,7 +19,7 @@
 }
 
 .item-name, .item-price, .item-quantity {
-    color: #333;
+    color: white;
     margin: 5px 0;
 }
 
@@ -28,8 +28,8 @@ button, .btn {
     cursor: pointer;
     padding: 10px 15px;
     border: none;
-    color: white;
-    background-color: #007bff;
+    /*color: white;*/
+    /*background-color: #007bff;*/
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -40,7 +40,7 @@ button, .btn {
 
 .empty-cart {
     text-align: center;
-    color: #333;
+    color: white;
 }
 
 .cart-summary {
@@ -50,8 +50,10 @@ button, .btn {
 
 .total-price {
     font-weight: bold;
-    color: #333;
+    color: white;
 }
+
+
 
 .item-info {
     display: flex;
