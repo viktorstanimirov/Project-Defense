@@ -67,9 +67,7 @@ a {
 }
 
 #index-headline .index-message {
-    /*display: inline-block;*/
     z-index: 999;
-    /*margin: 150px auto;*/
     left: 0;
     top: 40%;
     text-align: left;
@@ -144,7 +142,6 @@ a {
     font-size: 60px;
     font-family: "fantasy", serif;
     color: white;
-    /*text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);*/
     text-shadow: white 0 0 10px;
 }
 
@@ -216,7 +213,7 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
     margin-top: 10px;
-    padding: 10px;
+    padding: 25px;
     margin-left: 20px;
     background-position: right 35% bottom 45%;
     box-sizing: border-box;

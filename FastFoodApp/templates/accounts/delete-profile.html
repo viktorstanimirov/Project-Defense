@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id="delete-page" class="auth">
+        <div class="container">
+            <h1 style="color: red;">Are you sure you want to delete your profile: {{ appsuser.username }}?</h1>
+            <form action="{% url "delete-profile" pk=request.user.id %}" method="post">
+                {% csrf_token %}
+                <input class="btn" type="submit" value="Yes,delete my profile">
+                <input class="btn" type="button" value="No, take me back"
+                       onclick="window.history.back(); return false;">
+            </form>
+        </div>
+    </section>
+{% endblock %}
+

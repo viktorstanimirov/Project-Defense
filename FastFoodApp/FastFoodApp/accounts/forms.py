@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 
-
 UserModel = get_user_model()
 
 
@@ -85,4 +84,18 @@ class UpdateAppUserForm(forms.ModelForm):
                     'placeholder': 'Enter your date of birth',
                 }
             ),
+
+            'profile_picture': forms.FileInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Upload your profile picture',
+                }
+            )
         }
+
+
+class AppUserDeleteForm(forms.ModelForm):
+    class Meta:
+        model = UserModel
+        fields = []
+

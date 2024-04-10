@@ -15,6 +15,7 @@ MY_APPS = [
     'FastFoodApp.web',
     'FastFoodApp.products',
     'FastFoodApp.accounts',
+    'FastFoodApp.cart',
 
 ]
 

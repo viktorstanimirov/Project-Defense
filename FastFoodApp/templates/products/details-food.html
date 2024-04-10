@@ -8,15 +8,16 @@
             <div class="product-header">
                 <img class="product-img"
                      src="{{ product.image.url }}"
-                     alt='product image'/>  
+                     alt='product image'/>
                 <h1>{{ product.name }}</h1>
-                <p><span class="description-product">Name: {{ product.name }}</span></p>
                 <p><span class="description-product">Price: {{ product.price }}</span></p>
                 <p><span class="description-product">Description:{{ product.description }}</span></p>
             </div>
             <div class="buttons">
+                {% if appsuser.is_authenticated or is_staff %}
                 <a href="{% url "update-food" pk=product.id %}" class="edit-button">Edit</a>
                 <a href="{% url "delete-food" pk=product.id %}" class="delete-button">Delete</a>
+                {% endif %}
             </div>
         </div>
     </section>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block main_content %}
-    
+
     {% if not products %}
         <p class="no-articles">Oops! Our Menu is Temporarily Unavailable.</p>
     {% else %}
@@ -12,17 +12,24 @@
             <div class="product-card">
                 <div class="image-wrap">
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                        
+
                 </div>
                 <h3>{{ product.name }}</h3>
                 <h1>${{ product.price }}</h1>
                 <h1>{{ product.description }}</h1>
                 <div class="details-buttons">
                     <a href="{% url "details-food" pk=product.id %}" class="details-btn">Details</a>
-                    <a href="{}" class="add-to-cart-btn">Add to Cart</a>
+                    <form action="{% url 'add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                    </form>
                 </div>
             </div>
         {% endfor %}
     </section>
 {% endblock %}
+
+
+
+
 

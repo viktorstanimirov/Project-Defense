@@ -16,6 +16,6 @@ class LogoutRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.info(request, "You are already logged in to the site!")
-            return redirect("details user", pk=request.user.pk)
+            return redirect("index")
 
         return super().dispatch(request, *args, **kwargs)

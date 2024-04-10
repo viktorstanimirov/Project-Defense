@@ -1,20 +1,22 @@
-from django.contrib.auth import views as auth_views, get_user_model
-from django.contrib.auth.models import User
-from django.contrib.auth.views import LogoutView
+from django.contrib import messages
+from django.contrib.auth import views as auth_views, get_user_model, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views import generic as view
 
-from FastFoodApp.accounts.forms import AppUserCreationForm, LoginAppUserForm, UpdateAppUserForm
+
+from FastFoodApp.accounts.forms import AppUserCreationForm, LoginAppUserForm, UpdateAppUserForm, AppUserDeleteForm
+from FastFoodApp.core.appuser_mixins import LogoutRequiredMixin
 
 UserModel = get_user_model()
 
 
-class UserAccountCreateView(CreateView):
+class UserAccountCreateView(view.CreateView):
     model = UserModel
     form_class = AppUserCreationForm
-    template_name = "profiles/create-profile.html"
+    template_name = "accounts/create-profile.html"
     success_url = reverse_lazy('menu')
 
     def form_valid(self, form):
@@ -22,19 +24,27 @@ class UserAccountCreateView(CreateView):
         return super().form_valid(form)
 
 
-class LoginAppUserView(auth_views.LoginView):
-    template_name = "profiles/login.html"
+class LoginAppUserView(LogoutRequiredMixin, auth_views.LoginView):
+    template_name = "accounts/login.html"
     form_class = LoginAppUserForm
     success_url = reverse_lazy("index")
 
+    @login_required
+    def logout_user(request):
+        logout(request)
+        messages.info(request, "You were successfully logged out.")
+        return redirect("index")
 
-class LogoutAppUserView(LogoutView):
-    next_page = reverse_lazy('home')
+
+def logout_user(request):
+    logout(request)
+    messages.info(request, "You were successfully logged out.")
+    return redirect("index")
 
 
-class AppUserProfileView(DetailView):
+class AppUserProfileView(view.DetailView):
     model = UserModel
-    template_name = 'profiles/profile.html'
+    template_name = 'accounts/profile.html'
     context_object_name = 'appsuser'
 
     def get_object(self):
@@ -45,11 +55,11 @@ class AppUserProfileView(DetailView):
             return self.request.user
 
 
-class AppUserProfileUpdateView(SuccessMessageMixin, UpdateView):
+class AppUserProfileUpdateView(SuccessMessageMixin, view.UpdateView):
     model = UserModel
     form_class = UpdateAppUserForm
     success_message = "The profile was successfully edited!"
-    template_name = "profiles/update-profile.html"
+    template_name = "accounts/update-profile.html"
 
     def get_object(self):
         return self.request.user
@@ -63,3 +73,13 @@ class AppUserProfileUpdateView(SuccessMessageMixin, UpdateView):
         form.instance.email = self.request.user.email
         form.save()
         return super().form_valid(form)
+
+
+def appsuser_delete(request, pk):
+    appsuser = get_object_or_404(UserModel, pk=pk)
+    if request.method == "POST":
+        appsuser.delete()
+        messages.info(request, "The profile was successfully deleted!")
+        return redirect("index")
+    return render(request, "accounts/delete-profile.html", {"appsuser": appsuser})
+

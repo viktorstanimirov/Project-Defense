@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 
 from FastFoodApp.products.models import Product
@@ -13,3 +14,6 @@ def menu(request):
         'products': products
     }
     return render(request, "common/menu.html", context)
+
+
+

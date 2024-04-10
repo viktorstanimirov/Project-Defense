@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('FastFoodApp.web.urls')),
     path('products/', include('FastFoodApp.products.urls')),
     path('accounts/', include('FastFoodApp.accounts.urls')),
+    path('cart/', include('FastFoodApp.cart.urls')),
 ]
 
 if settings.DEBUG:

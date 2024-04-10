@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+        Welcome, {{ request.user.username }}
+        {% if request.user.cart.items.all %}
+            <div>Your cart:</div>
+        {% endif %}
+    {% else %}
+        <div>Please log in to see your cart.</div>
+    {% endif %}
+
+    <form action="{% url "add_to_card" food_item.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="food_item_id" value="{{ food_item.id }}">
+        <button type="submit">Add to cart</button>
+    </form>
+
+
+{% endblock %}
+
