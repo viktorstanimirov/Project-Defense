@@ -51,6 +51,7 @@ def cart_details(request):
     except Cart.DoesNotExist:
         cart = None
         cart_items = []
+        total_price = sum(item.food_item.price * item.quantity for item in cart_items)
 
     context = {
         "cart": cart,
@@ -82,3 +83,12 @@ def update_cart(request, item_id, action):
         cart_item.delete()
 
     return redirect("cart_details")
+
+
+def confirm_order(request):
+    context = {
+        "UserModel": UserModel
+    }
+    if not UserModel.first_name or not UserModel.last_name or not UserModel.email:
+        return redirect("profile", context)
+    return render(request, "cart/confirm_order.html", context)

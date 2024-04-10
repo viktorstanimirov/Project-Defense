@@ -4,7 +4,9 @@ from django.views import generic as view
 
 from FastFoodApp.products.forms import ProductCreateForm, ProductUpdateForm, ProductDeleteForm
 from FastFoodApp.products.models import Product
+
 UserModel = get_user_model()
+
 
 class ProductCreateView(view.CreateView):
     model = Product
@@ -19,7 +21,6 @@ class ProductDetailView(view.DetailView):
     model = Product
     template_name = "products/details-food.html"
     context_object_name = "product"
-
 
 
 class ProductUpdateView(view.UpdateView):

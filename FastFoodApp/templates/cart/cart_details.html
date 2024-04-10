@@ -35,10 +35,9 @@
         <div class="cart-summary">
             <div class="total-price">Total: $ {{ total_price }}</div>
         </div>
-
         <div class="cart-actions">
             <a href="{% url 'menu' %}" class="btn">Back to Menu</a>
-            <form action="{}" method="post" style="display: inline;">
+            <form action="{% url "confirm_order" %}" method="post" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit" class="btn confirm-order-btn">Confirm Order</button>
             </form>
