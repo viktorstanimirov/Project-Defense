@@ -1,6 +1,7 @@
+from celery import shared_task
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST
 
 from FastFoodApp.cart.models import Cart, CartItem
@@ -16,17 +17,33 @@ def add_to_cart(request, pk):
     food_item = get_object_or_404(Product, id=pk)
     item, created = CartItem.objects.get_or_create(cart=cart, food_item=food_item)
 
-    if not created:
+    if created:
+        remove_cart_items.apply_async((item.id,), countdown=10)
+    else:
         item.quantity += 1
         item.save()
 
     return redirect("menu")
 
 
+@shared_task
+def remove_cart_items(cart_item_id):
+    Cart.objects.filter(id=cart_item_id, expired=True).delete()
+
+
+@shared_task
+def remove_shoping_cart_item(item_id):
+    try:
+        item = CartItem.objects.get(id=item_id)
+        item.delete()
+    except CartItem.DoesNotExist:
+        pass
+
+
 @login_required
 def cart_details(request):
     try:
-        cart = Cart.objects.get(user=request.user,)
+        cart = Cart.objects.get(user=request.user, )
         cart_items = cart.items.all()
         total_price = sum(item.food_item.price * item.quantity for item in cart_items)
 
@@ -65,4 +82,3 @@ def update_cart(request, item_id, action):
         cart_item.delete()
 
     return redirect("cart_details")
-
