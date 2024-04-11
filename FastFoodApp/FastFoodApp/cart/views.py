@@ -1,7 +1,7 @@
 from celery import shared_task
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.decorators.http import require_POST
 
 from FastFoodApp.cart.models import Cart, CartItem
@@ -59,9 +59,6 @@ def cart_details(request):
         "total_price": total_price,
     }
     return render(request, "cart/cart_details.html", context)
-
-
-from django.shortcuts import redirect
 
 
 def update_cart(request, item_id, action):

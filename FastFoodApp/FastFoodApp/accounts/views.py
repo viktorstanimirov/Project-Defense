@@ -1,14 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import views as auth_views, get_user_model, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.views import generic as view
 
-
-from FastFoodApp.accounts.forms import AppUserCreationForm, LoginAppUserForm, UpdateAppUserForm, AppUserDeleteForm
-from FastFoodApp.core.appuser_mixins import LogoutRequiredMixin
+from FastFoodApp.accounts.forms import AppUserCreationForm, LoginAppUserForm, UpdateAppUserForm
 
 UserModel = get_user_model()
 
@@ -24,16 +21,31 @@ class UserAccountCreateView(view.CreateView):
         return super().form_valid(form)
 
 
-class LoginAppUserView(LogoutRequiredMixin, auth_views.LoginView):
+# class LoginAppUserView(LogoutRequiredMixin, auth_views.LoginView):
+#     template_name = "accounts/login.html"
+#     form_class = LoginAppUserForm
+#     success_url = reverse_lazy("index")
+#
+#     @login_required
+#     def logout_user(request):
+#         logout(request)
+#         messages.info(request, "You were successfully logged out.")
+#         return redirect("index")
+
+
+class LoginAppUserView(auth_views.LoginView):
     template_name = "accounts/login.html"
     form_class = LoginAppUserForm
-    success_url = reverse_lazy("index")
 
-    @login_required
-    def logout_user(request):
-        logout(request)
-        messages.info(request, "You were successfully logged out.")
-        return redirect("index")
+    def get_success_url(self):
+        user = self.request.user
+        if not user.first_name or not user.last_name or not user.email:
+            return reverse("update-profile", kwargs={'pk': user.pk})
+        return super().get_success_url()
+
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        return redirect(self.get_success_url())
 
 
 def logout_user(request):
@@ -82,4 +94,3 @@ def appsuser_delete(request, pk):
         messages.info(request, "The profile was successfully deleted!")
         return redirect("index")
     return render(request, "accounts/delete-profile.html", {"appsuser": appsuser})
-
