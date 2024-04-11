@@ -10,16 +10,16 @@
     gap: 10px;
 }
 
-.step-links-buttons a,
-.step-links-buttons span.current {
-    font-size: 20px;
-    color: black;
-    padding: 10px 15px;
-    margin: 0 5px;
-    text-decoration: none;
-    background-color: #FAFAFA;
-    transition: background-color 0.3s, color 0.3s;
-}
+/*.step-links-buttons a,*/
+/*.step-links-buttons span.current {*/
+/*    font-size: 20px;*/
+/*    color: black;*/
+/*    padding: 10px 15px;*/
+/*    margin: 0 5px;*/
+/*    text-decoration: none;*/
+/*    background-color: #FAFAFA;*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
 
 .step-links-buttons a:hover {
     background-color: #3498db;
@@ -52,21 +52,22 @@
 
 .pagination-arrow .material-icons {
     font-size: 30px;
-    color: #3498db;
+    color: #ffffff;
 }
 .pagination-arrow:hover .material-icons {
     color: #1abc9c;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
 }
 
 .pagination-arrow {
-  padding: 0 10px;
+    padding: 0 10px;
 }
 
 .page-info {

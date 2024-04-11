@@ -1,48 +1,98 @@
+{#{% extends "base.html" %}#}
+{##}
+{#{% block main_content %}#}
+{#    <div class="cart-container">#}
+{#        {% for item in cart_items %}#}
+{#            <div class="cart-item">#}
+{#                <div class="item-image">#}
+{#                    <img src="{{ item.food_item.image.url }}" alt="{{ item.food_item.name }}" class="product-image">#}
+{#                </div>#}
+{#                <div class="item-info">#}
+{#                    <div class="item-name">{{ item.food_item.name }}</div>#}
+{#                    <div class="item-price">$ {{ item.food_item.price }}</div>#}
+{#                    <div class="item-quantity">Quantity: {{ item.quantity }}</div>#}
+{##}
+{#                    <form action="{% url 'update_cart' item.id 'add' %}" method="post">#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit">+</button>#}
+{#                    </form>#}
+{##}
+{#                    <form action="{% url 'update_cart' item.id 'remove' %}" method="post">#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit">-</button>#}
+{#                    </form>#}
+{##}
+{#                    <form action="{% url 'update_cart' item.id 'delete' %}" method="post">#}
+{#                        {% csrf_token %}#}
+{#                        <button type="submit">Remove</button>#}
+{#                    </form>#}
+{#                </div>#}
+{#            </div>#}
+{#        {% empty %}#}
+{#            <div class="empty-cart">Your cart is empty.</div>#}
+{#        {% endfor %}#}
+{##}
+{#        <div class="cart-summary">#}
+{#            <div class="total-price">Total: $ {{ total_price }}</div>#}
+{#        </div>#}
+{#        <div class="cart-actions">#}
+{#            <a href="{% url 'menu' %}" class="btn">Back to Menu</a>#}
+{#            <form action="{% url "confirm_order" %}" method="post" style="display: inline;">#}
+{#                {% csrf_token %}#}
+{#                <button type="submit" class="btn confirm-order-btn">Confirm Order</button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+{##}
+{##}
+
 {% extends "base.html" %}
 
 {% block main_content %}
-    <div class="cart-container">
-        {% for item in cart_items %}
-            <div class="cart-item">
-                <div class="item-image">
-                    <img src="{{ item.food_item.image.url }}" alt="{{ item.food_item.name }}" class="product-image">
-                </div>
-                <div class="item-info">
-                    <div class="item-name">{{ item.food_item.name }}</div>
-                    <div class="item-price">$ {{ item.food_item.price }}</div>
-                    <div class="item-quantity">Quantity: {{ item.quantity }}</div>
-
-                    <form action="{% url 'update_cart' item.id 'add' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">+</button>
-                    </form>
-
-                    <form action="{% url 'update_cart' item.id 'remove' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">-</button>
-                    </form>
-
-                    <form action="{% url 'update_cart' item.id 'delete' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Remove</button>
-                    </form>
-                </div>
-            </div>
-        {% empty %}
-            <div class="empty-cart">Your cart is empty.</div>
-        {% endfor %}
-
-        <div class="cart-summary">
-            <div class="total-price">Total: $ {{ total_price }}</div>
+<div class="cart-container">
+    {% for item in cart_items %}
+    <div class="cart-item">
+        <div class="item-image">
+            <img src="{{ item.food_item.image.url }}" alt="{{ item.food_item.name }}" class="product-image">
         </div>
-        <div class="cart-actions">
-            <a href="{% url 'menu' %}" class="btn">Back to Menu</a>
-            <form action="{% url "confirm_order" %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn confirm-order-btn">Confirm Order</button>
-            </form>
+        <div class="item-info">
+            <div class="item-details">
+                <div class="item-name">{{ item.food_item.name }}</div>
+                <div class="item-price">$ {{ item.food_item.price }}</div>
+                <div class="item-quantity">Quantity: {{ item.quantity }}</div>
+            </div>
+            <div class="item-actions">
+                <form action="{% url 'update_cart' item.id 'add' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">+</button>
+                </form>
+
+                <form action="{% url 'update_cart' item.id 'remove' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">-</button>
+                </form>
+
+                <form action="{% url 'update_cart' item.id 'delete' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </div>
         </div>
     </div>
+    {% empty %}
+    <div class="empty-cart">Your cart is empty.</div>
+    {% endfor %}
+
+    <div class="cart-summary">
+        <div class="total-price">Total: $ {{ total_price }}</div>
+    </div>
+    <div class="cart-actions">
+        <a href="{% url 'menu' %}" class="btn action-btn">Back to Menu</a>
+        <form action="{% url "confirm_order" %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn action-btn confirm-order-btn">Confirm Order</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
-
-

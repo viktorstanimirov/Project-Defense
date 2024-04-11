@@ -171,7 +171,10 @@ a {
     box-shadow: 0 0 20px white;
 }
 
-.details-btn:hover, .add-to-cart-btn:hover {
+.details-btn:hover,
+.add-to-cart-btn:hover,
+.step-links-buttons a,
+.step-links-buttons span.current{
     box-shadow: 0 0 80px white,
     0 0 40px white,
     0 0 20px white,

@@ -21,18 +21,6 @@ class UserAccountCreateView(view.CreateView):
         return super().form_valid(form)
 
 
-# class LoginAppUserView(LogoutRequiredMixin, auth_views.LoginView):
-#     template_name = "accounts/login.html"
-#     form_class = LoginAppUserForm
-#     success_url = reverse_lazy("index")
-#
-#     @login_required
-#     def logout_user(request):
-#         logout(request)
-#         messages.info(request, "You were successfully logged out.")
-#         return redirect("index")
-
-
 class LoginAppUserView(auth_views.LoginView):
     template_name = "accounts/login.html"
     form_class = LoginAppUserForm

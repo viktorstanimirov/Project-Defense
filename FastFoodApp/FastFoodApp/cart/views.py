@@ -47,7 +47,6 @@ def cart_details(request):
         cart_items = cart.items.all()
         total_price = sum(item.food_item.price * item.quantity for item in cart_items)
 
-        print(cart_items)
     except Cart.DoesNotExist:
         cart = None
         cart_items = []
