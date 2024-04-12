@@ -1,14 +1,21 @@
+import os
+
+
+from dotenv import load_dotenv, dotenv_values
+
 from pathlib import Path
+
+import os
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jj3t1p$ew#ysm=&*kp(13+w@&(^47j2!#6#kn2s@#nhsxiuu&*'
+SECRET_KEY = os.getenv('SECRET_KEY', 'optional_default_value')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://fastfoodapp.azurewebsites.net/"]
 
 # Application definition
 MY_APPS = [
@@ -60,18 +67,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FastFoodApp.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+if not DEBUG:
 
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv('DATABASE_NAME'),
+            "USER": os.getenv('DATABASE_USER'),
+            "PASSWORD": os.getenv('DATABASE_PASSWORD'),
+            "HOST": os.getenv('DATABASE_HOST'),
+            "PORT": os.getenv('DATABASE_PORT'),
+    }
+}
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "fast_food_db",
-        "USER": "postgres",
-        "PASSWORD": "Nokiapower1",
-        "HOST": "127.0.0.1",
-        "PORT": "5433",
+else:
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv('DATABASE_NAME'),
+            "USER": os.getenv('DATABASE_USER'),
+            "PASSWORD": os.getenv('DATABASE_PASSWORD'),
+            "HOST": os.getenv('DATABASE_HOST'),
+            "PORT": os.getenv('DATABASE_PORT'),
     }
 }
 # Password validation
