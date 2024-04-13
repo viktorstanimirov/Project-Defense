@@ -1,11 +1,8 @@
 import os
-
-
-from dotenv import load_dotenv, dotenv_values
-
+import os
 from pathlib import Path
 
-import os
+from dotenv import load_dotenv, dotenv_values
 
 load_dotenv()
 
@@ -15,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'optional_default_value')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://fastfoodapp.azurewebsites.net/"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "https://fastfoodapp.azurewebsites.net/"]
 
 # Application definition
 MY_APPS = [
@@ -67,7 +64,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FastFoodApp.wsgi.application'
 
-if not DEBUG:
+
+if os.getenv('DEBUG'):
 
     DATABASES = {
         "default": {
@@ -77,21 +75,21 @@ if not DEBUG:
             "PASSWORD": os.getenv('DATABASE_PASSWORD'),
             "HOST": os.getenv('DATABASE_HOST'),
             "PORT": os.getenv('DATABASE_PORT'),
+        }
     }
-}
 
 else:
 
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv('DATABASE_NAME'),
-            "USER": os.getenv('DATABASE_USER'),
-            "PASSWORD": os.getenv('DATABASE_PASSWORD'),
-            "HOST": os.getenv('DATABASE_HOST'),
-            "PORT": os.getenv('DATABASE_PORT'),
+            "NAME": os.getenv('AZURE_DATABASE_NAME'),
+            "USER": os.getenv('AZURE_DATABASE_USER'),
+            "PASSWORD": os.getenv('AZURE_DATABASE_PASSWORD'),
+            "HOST": os.getenv('AZURE_DATABASE_HOST'),
+            "PORT": os.getenv('AZURE_DATABASE_PORT'),
+        }
     }
-}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -128,7 +126,6 @@ STATIC_URL = 'staticfiles/'
 STATICFILES_DIRS = [
     BASE_DIR / 'staticfiles'
 ]
-
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
