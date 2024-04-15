@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', None)
 
-# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
-ALLOWED_HOSTS = ['fastfoodapp.azurewebsites.net', ]
+
+ALLOWED_HOSTS = ["fastfoodapp.azurewebsites.net"]
 CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 
 DEBUG = False
@@ -66,29 +66,29 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FastFoodApp.wsgi.application'
 
-if DEBUG:
+# if DEBUG:
+#
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql",
+#             "NAME": os.getenv('DATABASE_NAME'),
+#             "USER": os.getenv('DATABASE_USER'),
+#             "PASSWORD": os.getenv('DATABASE_PASSWORD'),
+#             "HOST": os.getenv('DATABASE_HOST'),
+#             "PORT": os.getenv('DATABASE_PORT'),
+#         }
+#     }
+#
+# else:
 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv('DATABASE_NAME'),
-            "USER": os.getenv('DATABASE_USER'),
-            "PASSWORD": os.getenv('DATABASE_PASSWORD'),
-            "HOST": os.getenv('DATABASE_HOST'),
-            "PORT": os.getenv('DATABASE_PORT'),
-        }
-    }
-
-else:
-
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv('AZURE_DATABASE_NAME'),
-            "USER": os.getenv('AZURE_DATABASE_USER'),
-            "PASSWORD": os.getenv('AZURE_DATABASE_PASSWORD'),
-            "HOST": os.getenv('AZURE_DATABASE_HOST'),
-            "PORT": os.getenv('AZURE_DATABASE_PORT'),
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv('AZURE_DATABASE_NAME'),
+        "USER": os.getenv('AZURE_DATABASE_USER'),
+        "PASSWORD": os.getenv('AZURE_DATABASE_PASSWORD'),
+        "HOST": os.getenv('AZURE_DATABASE_HOST'),
+        "PORT": os.getenv('AZURE_DATABASE_PORT'),
         }
     }
 # Password validation
