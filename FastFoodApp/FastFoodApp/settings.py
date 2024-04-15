@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'optional_default_value')
 
 ALLOWED_HOSTS = []
 
-DEBUG = True
+DEBUG = False
 
 # Application definition
 MY_APPS = [
