@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'optional_default_value')
 
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
-ALLOWED_HOSTS = "fastfoodapp.azurewebsites.net"
+ALLOWED_HOSTS = ["fastfoodapp.azurewebsites.net"]
 CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 
 DEBUG = False
