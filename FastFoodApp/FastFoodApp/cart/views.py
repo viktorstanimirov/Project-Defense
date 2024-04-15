@@ -88,3 +88,5 @@ def confirm_order(request):
     if not UserModel.first_name or not UserModel.last_name or not UserModel.email:
         return redirect("profile", context)
     return render(request, "cart/confirm_order.html", context)
+
+

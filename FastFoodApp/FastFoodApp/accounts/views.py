@@ -14,7 +14,7 @@ class UserAccountCreateView(view.CreateView):
     model = UserModel
     form_class = AppUserCreationForm
     template_name = "accounts/create-profile.html"
-    success_url = reverse_lazy('menu')
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
         form.save()
@@ -28,7 +28,7 @@ class LoginAppUserView(auth_views.LoginView):
     def get_success_url(self):
         user = self.request.user
         if not user.first_name or not user.last_name or not user.email:
-            return reverse("update-profile", kwargs={'pk': user.pk})
+            return reverse("menu")
         return super().get_success_url()
 
     def form_valid(self, form):

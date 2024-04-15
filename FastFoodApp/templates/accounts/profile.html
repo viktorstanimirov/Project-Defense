@@ -15,9 +15,9 @@
                 <img class="profile-img" src="{% static "images/profile_picture.jpg" %}" alt="profile image">
             {% endif %}
             <h1>Username: {{ user.username }}</h1>
-            <p><span class="description-profile">Name: {{ appsuser.username}}</span></p>
+            <p><span class="description-profile">Name: {{ appsuser.get_full_name}}</span></p>
             <p><span class="description-profile">E-mail: {{ appsuser.email }}</span></p>
-            <p><span class="description-profile">Description:{{ appsuser.get_full_name }}</span></p>
+            <p><span class="description-profile">Phone number:{{ appsuser.phone_number }}</span></p>
         </div>
         <div class="buttons">
             <a href="{% url "update-profile" pk=appsuser.id %}" class="edit-button">Edit</a>

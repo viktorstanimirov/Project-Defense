@@ -15,7 +15,7 @@
                 <p><span class="description-product">Description:{{ product.description }}</span></p>
             </div>
             <div class="buttons">
-                {% if  request.user|has_group:"admin_group" %}
+                {% if  request.user|has_group:"admin_group" or user.is_superuser %}
                 <a href="{% url "update-food" pk=product.id %}" class="edit-button">Edit</a>
                 <a href="{% url "delete-food" pk=product.id %}" class="delete-button">Delete</a>
                 {% endif %}

@@ -13,13 +13,17 @@
 
                     </div>
                     <h3>{{ product.name }}</h3>
-                    <h1>${{ product.price }}</h1>
-                    <h1>{{ product.description }}</h1>
+                   <h2 style="color: white;">${{ product.price }}</h2>
+
+{#                    <h1>{{ product.description }}</h1>#}
                     <div class="details-buttons">
                         <a href="{% url "details-food" pk=product.id %}" class="details-btn">Details</a>
+                        {% if user.id %}
                         <form action="{% url 'add_to_cart' product.id %}" method="post">
+                             <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                            {% endif %}
                             {% csrf_token %}
-                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+
                         </form>
                     </div>
                 </div>
