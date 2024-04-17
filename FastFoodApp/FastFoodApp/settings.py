@@ -1,19 +1,16 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv, dotenv_values
+from dotenv import load_dotenv
 
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY="django-insecure-jj3t1p$ew#ysm=&*kp(13+w@&(^47j2!#6#kn2s@#nhsxiuu&*"
+SECRET_KEY = "django-insecure-jj3t1p$ew#ysm=&*kp(13+w@&(^47j2!#6#kn2s@#nhsxiuu&*"
 
-dfsdfsdfdsfdsfsdfds
+ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
-
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
 
 DEBUG = True
 
@@ -38,7 +35,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,14 +121,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles'
+    os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_ROOT = BASE_DIR / 'static'
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

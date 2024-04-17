@@ -26,7 +26,7 @@
     margin: 5px 0;
 }
 
-button, .btn,{
+button, .btn {
     cursor: pointer;
     padding: 17px 10px;
     border: none;
@@ -134,4 +134,4 @@ button, .btn,{
     0 0 20px white,
     0 0 5px white;
 }
-}
+
