@@ -37,3 +37,51 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.food_item.name} - Quantity: {self.quantity} - Cost: {self.get_cost()}"
+
+
+class DeliveryAddress(models.Model):
+    CITY_CHOICES_MAX_LENGTH = 7
+    NEIGHBORHOOD_MAX_LENGTH = 40
+    STREET_MAX_LENGTH = 50
+
+    CITY_CHOICES = [
+        ("Sofia", "Sofia"),
+        ("Plovdiv", "Plovdiv"),
+    ]
+    user = models.OneToOneField(
+        UserModel,
+        on_delete=models.CASCADE
+    )
+
+    city = models.CharField(
+        max_length=CITY_CHOICES_MAX_LENGTH,
+        choices=CITY_CHOICES,
+        null=False,
+        blank=False,
+
+    )
+
+    neighborhood = models.CharField(
+        max_length=NEIGHBORHOOD_MAX_LENGTH,
+        null=True,
+        blank=True,
+
+    )
+
+    street = models.CharField(
+        max_length=STREET_MAX_LENGTH,
+        null=True,
+        blank=True,
+    )
+
+    building_street_number = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+    )
+
+    def __str__(self):
+        return f"{self.city}, {self.neighborhood}, {self.street}, {self.building_street_number}"
+
+
+
+

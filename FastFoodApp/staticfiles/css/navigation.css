@@ -87,3 +87,39 @@ nav a:hover {
     margin: 0;
     padding: 0;
 }
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%; /* Makes the links full width */
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .button-class {
+        padding: 12px 24px;
+        font-size: 18px;
+        width: auto; /* Adjust width as necessary */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+    nav a {
+        font-size: 14px;
+    }
+
+    .button-class {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
