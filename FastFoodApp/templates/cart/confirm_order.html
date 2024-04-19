@@ -4,13 +4,15 @@
 
 {% block main_content %}
 
-    {% if not appsuser.first_name or appsuser.last_name or appsuser.email %}
+    {% if user.first_name is None or user.last_name is None %}
+
 
     <div id="confirm-container" class="confirm-container">
     <h1 class="confirm-title">You must update you profile details befor order</h1>
     <button class="confirm-btn" onclick="location.href='{% url 'update-profile' pk=user.id %}'">Back to your Profile</button>
 </div>
     {% else %}
+
 <div id="confirm-container" class="confirm-container">
     <h1 class="confirm-title">Your order is confirmed. Await delivery.</h1>
     <button class="confirm-btn" onclick="location.href='{% url 'menu' %}'">Back to Menu</button>

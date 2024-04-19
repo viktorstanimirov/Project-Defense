@@ -18,7 +18,7 @@ def index(request):
 
 def menu(request):
     products_list = Product.objects.all()
-    paginator = Paginator(products_list, 6)
+    paginator = Paginator(products_list, 5)
 
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)

@@ -1,10 +1,14 @@
 from celery import shared_task
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse_lazy
+from django.views import generic as view
 from django.views.decorators.http import require_POST
 
-from FastFoodApp.cart.models import Cart, CartItem
+from FastFoodApp.cart.forms import DeliveryAddressForm
+from FastFoodApp.cart.models import Cart, CartItem, DeliveryAddress
 from FastFoodApp.products.models import Product
 
 UserModel = get_user_model()
@@ -89,4 +93,25 @@ def confirm_order(request):
         return redirect("profile", context)
     return render(request, "cart/confirm_order.html", context)
 
+
+class DeliveryAddressView(view.CreateView):
+    model = DeliveryAddress
+    form_class = DeliveryAddressForm
+    template_name = "cart/delivery_address.html"
+
+    def form_valid(self, form):
+        obj, created = DeliveryAddress.objects.update_or_create(
+            user=self.request.user,
+            defaults={
+                'city': form.cleaned_data['city'],
+                'neighborhood': form.cleaned_data['neighborhood'],
+                'street': form.cleaned_data['street'],
+                'building_street_number': form.cleaned_data['building_street_number'],
+            }
+        )
+        # Return a redirect to the success URL since the object has been successfully created/updated.
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse_lazy('confirm_order')
 

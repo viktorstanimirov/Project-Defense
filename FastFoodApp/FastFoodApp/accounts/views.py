@@ -82,3 +82,5 @@ def appsuser_delete(request, pk):
         messages.info(request, "The profile was successfully deleted!")
         return redirect("index")
     return render(request, "accounts/delete-profile.html", {"appsuser": appsuser})
+
+

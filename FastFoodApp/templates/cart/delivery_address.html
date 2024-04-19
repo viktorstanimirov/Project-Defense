@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <section id="create-page" class="auth">
+
+        <form action="{% url "delivery_address" %}" method="post" enctype="multipart/form-data">
+            <div class="container">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input class="btn" type="submit" value="Confirm Order">
+            </div>
+        </form>
+    </section>
+{% endblock %}

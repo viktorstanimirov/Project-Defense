@@ -1,7 +1,7 @@
 from django.urls import path
 
 from FastFoodApp.accounts.views import LoginAppUserView, UserAccountCreateView, AppUserProfileView, \
-    AppUserProfileUpdateView,logout_user, appsuser_delete
+    AppUserProfileUpdateView, logout_user, appsuser_delete
 
 urlpatterns = (
     path("singup/", UserAccountCreateView.as_view(), name="signup"),

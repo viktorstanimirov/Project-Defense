@@ -83,16 +83,24 @@
     {% empty %}
     <div class="empty-cart">Your cart is empty.</div>
     {% endfor %}
+    {% if not cart_items %}
+     </div>
+    <div class="cart-actions">
+        <a href="{% url 'menu' %}" class="btn action-btn">Back to Menu</a>
+
+        {% else %}
 
     <div class="cart-summary">
         <div class="total-price">Total: $ {{ total_price }}</div>
     </div>
     <div class="cart-actions">
         <a href="{% url 'menu' %}" class="btn action-btn">Back to Menu</a>
-        <form action="{% url "confirm_order" %}" method="post" style="display: inline;">
+        <form action="{% url "delivery_address" %}" method="post" style="display: inline;">
             {% csrf_token %}
-            <button type="submit" class="btn action-btn confirm-order-btn">Confirm Order</button>
+             {{ form.as_p }}
+            <button type="submit" class="btn action-btn confirm-order-btn">Delivery Address</button>
         </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
