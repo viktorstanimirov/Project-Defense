@@ -39,7 +39,6 @@ class WebViewsTests(TestCase):
         self.assertTrue(response.context['page_obj'])
         self.assertEqual(response.context['page_obj'].number, 1)  # First page
 
-        # Test the second page
         response = self.client.get(reverse('menu') + '?page=2')
         self.assertEqual(len(response.context['products']), 5)
         self.assertEqual(response.context['page_obj'].number, 2)

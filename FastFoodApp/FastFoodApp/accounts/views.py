@@ -38,7 +38,7 @@ class LoginAppUserView(auth_views.LoginView):
 
 def logout_user(request):
     logout(request)
-    messages.info(request, "You were successfully logged out.")
+
     return redirect("index")
 
 
@@ -58,7 +58,7 @@ class AppUserProfileView(view.DetailView):
 class AppUserProfileUpdateView(SuccessMessageMixin, view.UpdateView):
     model = UserModel
     form_class = UpdateAppUserForm
-    success_message = "The profile was successfully edited!"
+
     template_name = "accounts/update-profile.html"
 
     def get_object(self):
@@ -79,7 +79,7 @@ def appsuser_delete(request, pk):
     appsuser = get_object_or_404(UserModel, pk=pk)
     if request.method == "POST":
         appsuser.delete()
-        messages.info(request, "The profile was successfully deleted!")
+
         return redirect("index")
     return render(request, "accounts/delete-profile.html", {"appsuser": appsuser})
 
