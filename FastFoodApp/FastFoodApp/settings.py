@@ -9,10 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-jj3t1p$ew#ysm=&*kp(13+w@&(^47j2!#6#kn2s@#nhsxiuu&*"
 
-ALLOWED_HOSTS = []
-
-
 DEBUG = True
+
+ALLOWED_HOSTS = []
 
 # Application definition
 MY_APPS = [
@@ -42,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'FastFoodApp.urls'
@@ -50,6 +50,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates']
+
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,31 +66,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'FastFoodApp.wsgi.application'
 
-if DEBUG:
+# if DEBUG:
 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv('DATABASE_NAME'),
-            "USER": os.getenv('DATABASE_USER'),
-            "PASSWORD": os.getenv('DATABASE_PASSWORD'),
-            "HOST": os.getenv('DATABASE_HOST'),
-            "PORT": os.getenv('DATABASE_PORT'),
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv('DATABASE_NAME'),
+        "USER": os.getenv('DATABASE_USER'),
+        "PASSWORD": os.getenv('DATABASE_PASSWORD'),
+        "HOST": os.getenv('DATABASE_HOST'),
+        "PORT": os.getenv('DATABASE_PORT'),
     }
+}
 
-else:
-
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv('AZURE_DATABASE_NAME'),
-            "USER": os.getenv('AZURE_DATABASE_USER'),
-            "PASSWORD": os.getenv('AZURE_DATABASE_PASSWORD'),
-            "HOST": os.getenv('AZURE_DATABASE_HOST'),
-            "PORT": os.getenv('AZURE_DATABASE_PORT'),
-        }
-    }
+# else:
+#
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.postgresql",
+#             "NAME": os.getenv('AZURE_DATABASE_NAME'),
+#             "USER": os.getenv('AZURE_DATABASE_USER'),
+#             "PASSWORD": os.getenv('AZURE_DATABASE_PASSWORD'),
+#             "HOST": os.getenv('AZURE_DATABASE_HOST'),
+#             "PORT": os.getenv('AZURE_DATABASE_PORT'),
+#         }
+#     }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -127,8 +128,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "staticfiles",
 ]
-
-
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

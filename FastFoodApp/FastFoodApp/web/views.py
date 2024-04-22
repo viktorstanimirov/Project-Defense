@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.shortcuts import render
-
+from django.template import RequestContext
 from FastFoodApp.products.models import Product
 
 UserModel = get_user_model()
@@ -26,3 +26,9 @@ def menu(request):
 
     context = {'products': products, 'page_obj': page_obj}
     return render(request, "common/menu.html", context)
+
+
+def custom_404(request, exception):
+    response = render(request, '404.html', {})
+    response.status_code = 404
+    return response

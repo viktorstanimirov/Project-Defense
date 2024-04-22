@@ -18,11 +18,13 @@ UserModel = get_user_model()
 def add_to_cart(request, pk):
     app_user = get_object_or_404(UserModel, id=request.user.id)
     cart, created = Cart.objects.get_or_create(user=app_user)
+
     food_item = get_object_or_404(Product, id=pk)
+
     item, created = CartItem.objects.get_or_create(cart=cart, food_item=food_item)
 
     if created:
-        remove_cart_items.apply_async((item.id,), countdown=10)
+        pass
     else:
         item.quantity += 1
         item.save()
@@ -30,12 +32,11 @@ def add_to_cart(request, pk):
     return redirect("menu")
 
 
-@shared_task
-def remove_cart_items(cart_item_id):
-    Cart.objects.filter(id=cart_item_id, expired=True).delete()
+# @shared_task
+# def remove_cart_items(cart_item_id):
+#     Cart.objects.filter(id=cart_item_id, expired=True).delete()
 
 
-@shared_task
 def remove_shoping_cart_item(item_id):
     try:
         item = CartItem.objects.get(id=item_id)
@@ -109,9 +110,7 @@ class DeliveryAddressView(view.CreateView):
                 'building_street_number': form.cleaned_data['building_street_number'],
             }
         )
-        # Return a redirect to the success URL since the object has been successfully created/updated.
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
         return reverse_lazy('confirm_order')
-
